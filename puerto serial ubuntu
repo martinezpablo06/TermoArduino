@@ -1,0 +1,33 @@
+PROBLEMAS CON EL PUERTO SERIAL ARDUINO-UBUNTU
+ fuente: https://strlgm.wordpress.com/2016/02/18/395/
+
+Al ingresar a Herramientas/ Puerto Serial aparece como deshabilitado y esto no permitirá que descarguemos 
+nuestro código a la tarjeta. Esto es debido a que el sistema no tiene permisos suficientes para poder establecer 
+una comunicación a travez del puerto USB.El sistema linux, al conectar un USB le asigna un formato del tipo 
+ttyACM0 o similar y esto se encuentra en la ubicacion /dev.
+
+Lo primero que tenemos que hacer es revisar como asigna el sistema operativo los puertos.
+Vamos abrir una terminal de ubuntu y antes de conectar el Arduino ejecutaremos el siguiente comando.
+      ls -l /dev | grep ACM
+
+Si no hay ningún dispositivo conectado, no aparecerá ningún resultado. En caso contrario aparecerá asignado con 
+algún nombre. Ahora conectamos el arduino a la placa y ejecutamos el mismo comando.Deberá aparecer una linea similar a
+      crw-rw—- 1 root dialout 166, 0 sep 25 14:42 ttyACM0
+
+En este caso dice que solo el usuario root puede acceder al puerto.
+Por lo tanto procedemos a brindarle permisos para los usuarios normales del sistema, ejecutamos e lo siguiente:
+      sudo chmod 777 /dev/ttyACM0
+
+Donde ttyACM0 es el nombre que nos dio en el primer comando, este puede ser ttyACM1 Al ejecutar este comando
+les pedirá la contraseña del sistema. Para asegurarnos que ha cambiado los permisos ejecutamos de nuevo
+      ls -l /dev | grep ACM
+
+el resultado debe ser similar a:
+      crwxrwxrwx 1 root dialout 166, 0 sep 25 14:42 ttyACM0
+
+El cambio que notaremos esta en las primeras letras del mensaje de respuesta:
+      Antes: crw-rw—- 1 root dialout 166, 0 sep 25 14:42 ttyACM0
+      Ahora: crwxrwxrwx 1 root dialout 166, 0 sep 25 14:42 ttyACM0
+
+Indica que los demas usuarios ya tienen acceso al puerto ttyACM0. 
+DE ESTA FORMA YA HABILITAMOS EL PUERTO EN EL IDE DE ARDUINO.
