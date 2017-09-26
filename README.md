@@ -12,13 +12,14 @@ instrucciones de uso:
 
 1- seleccion de temperatura:
 al encender figura la temperatura prestablecida 90 grados.(se puede modificar en la linea 24 del archivo .ino)
-con los botones laterales se puedde subir o bajar la temperatura de corte de a 1 grado.
+con los botones laterales se puede subir o bajar la temperatura de corte de a 1 grado.
 
   - guardar temperatura selecionada:
-  al presionar de forma simultanea ambos botones laterales, se guarda la temperatura en memoria.
+  al presionar de forma simultanea ambos botones laterales.
 
-  - funcion termometro: (sin necesidad de tener el calentador conectado)
-  al encender presionar de forma simultanea al boton izquierdo y el central.
+  - funcion termometro: 
+  (sin necesidad de tener el calentador conectado)
+  al encender presionar de forma simultanea el boton izquierdo y el central.
 
 2a- calentamiento simple:
 al presionar el boton central se permte el paso de corriente al calentador, siendo visible la temperatura actual. 
@@ -32,8 +33,9 @@ la temperatura establecida, cada vez que la temperatura del agua baje 4 grados (
 el calentador se vuelve a encerder hasta que otra vez se alcanse la temperatura establecida.
 el proceso se detiene alpulsar el boton central
 
-3-reiniciar
-luego, al pulsar el boton central se retorna al paso 1. Seleccion de temperatura.
+3-reiniciar:
+luego de finalizado el paso 2a, 2b o la funcion termometro,
+al pulsar el boton central se retorna al paso 1; Seleccion de temperatura.
 
 
 
